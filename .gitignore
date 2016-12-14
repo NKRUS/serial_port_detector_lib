@@ -1,0 +1,26 @@
+# Gradle caches, etc
+**/.gradle
+
+# IntelliJ IDEA project files
+**/*.ipr
+**/*.iws
+**/*.iml
+.idea/*
+# !.idea/vcs.xml
+# !.idea/modules.xml
+# !.idea/encodings.xml
+# !.idea/codeStyleSettings.xml
+# !.idea/runConfigurations/
+
+# Eclipse project files
+.classpath
+.project
+.settings
+**/.settings
+
+# Compiled stuff
+build
+out
+bin
+target
+**/bin/
