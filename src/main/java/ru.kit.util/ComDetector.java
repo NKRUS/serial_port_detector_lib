@@ -1,5 +1,6 @@
 package ru.kit.util;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,6 +31,7 @@ public class ComDetector {
      * @param registryKey path to the device-record in the Windows Registry
      * @return - Friendly Name of device.
      */
+    @Deprecated
     public static String getFriendlyName(String registryKey) {
         if (registryKey == null || registryKey.isEmpty()) {
             throw new IllegalArgumentException("'registryKey' null or empty");
@@ -51,6 +53,7 @@ public class ComDetector {
      * @param registryKey - path to the device-record in the Windows Registry
      * @return - serial(com)port number of device; returns -1 on failure.
      */
+    @Deprecated
     public static int getComNumber(String registryKey) {
         String friendlyName = getFriendlyName(registryKey);
 
@@ -62,6 +65,23 @@ public class ComDetector {
             }
         }
         return -1;
+    }
+
+    /**
+     * Returns String array of serial ports which matching deviceName.
+     * @param deviceName - device name you want to look for.
+     * @return array of Strings.
+     */
+    public static String[] getSerialPortsByDeviceName(String deviceName){
+        try {
+            String s = jWMI.getWMIValue("Select * from Win32_SerialPort Where Caption LIKE '%"+deviceName+"%'", "DeviceID");
+            return s.substring(s.indexOf(".")+3).replaceAll("[^0-9]+", " ").trim().split(" ");
+        }catch (StringIndexOutOfBoundsException e){
+            return new String[0];
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new String[0];
     }
 
 }
