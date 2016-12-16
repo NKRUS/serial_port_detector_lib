@@ -9,7 +9,7 @@
 <p>~~Path: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USB\`~~
 <p>~~Now look for your serial-port device, there should be something like this: `VID_10C4&PID_EA60\0001` or `VID_0A89&PID_0008\5&607b864&0&3`.~~
 <p>~~In my example, i have catalog named 0001, that's what i need. I can make sure it is my device, by looking at the properties of catalog. There should be FriendlyName property and in the end of a string-value should be serial-port of device.
-The API takes this number from the end of a string. 
+The API takes this number from the end of a string.~~ 
 <p><i>No magic - just parsing.
 
 
